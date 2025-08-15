@@ -7,35 +7,29 @@ Developed as part of the **Global AI Hub Python 202 Bootcamp**, this project dem
 3. Building and serving a REST API with **FastAPI**.
 
 ---
-
-## 📌 Introduction
 **library_app** evolves from a simple terminal-based book manager into an enriched application 
 that integrates external data sources and finally exposes its functionality as a REST API.
 
 The project emphasizes:
-- **Clean architecture** and code reusability.
 - **Persistent storage** using JSON.
 - **Robust testing** with `pytest`.
 - **API-driven development**.
 
 ---
 
-## 🎯 Goals
+## Goals
 - Implement **OOP principles** using an **Abstract Base Class** to enforce method contracts.
 - Provide core library operations: add, remove, list, find books.
 - Enrich data automatically using **Open Library Books API**.
 - Expose all operations through a **FastAPI**-powered REST API.
 
 ---
-
-## 🛠 Stages Overview
-
-### **Stage 1 – OOP Terminal Application**
+### Stage 1 – OOP Terminal Application
 - Created `Book` and `Library` classes.
 - Defined an `AbstractLibrary` **abstract base class** to enforce a consistent interface.
 - Implemented file persistence with `library.json`.
 
-### **Stage 2 – External API Integration**
+### Stage 2 – External API Integration
 - Integrated **Open Library Books API**:
   - Fetches book title and authors by ISBN.
   - Handles missing data and network errors.
@@ -43,7 +37,7 @@ The project emphasizes:
 - Prevented duplicate entries.
 - Added `httpx` to `requirements.txt`.
 
-### **Stage 3 – FastAPI Web Service**
+### Stage 3 – FastAPI Web Service
 - Developed REST endpoints:
   - `GET /books` – List all stored books.
   - `POST /books` – Add book by ISBN (fetch details via API).
@@ -53,7 +47,7 @@ The project emphasizes:
 
 ---
 
-## 🧩 Abstract Base Class Design
+## Abstract Base Class Design
 The **`AbstractLibrary`** class in `models/abstract_library.py` defines the *contract* for any library implementation.  
 
 ```python
