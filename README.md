@@ -68,7 +68,9 @@ Tests are written with **pytest**.
 
 ## Installation ✨
 - Clone the Repository:
-git clone https://github.com/<your-username>/library_app.git
+git clone https://github.com/fatmabkr/library_app.git
+cd library_app
+
 cd library_app
 
 ## Create virtual environment & install packages
