@@ -8,7 +8,7 @@ from models.abstract_library import AbstractLibrary
 
 
 class Library(AbstractLibrary):
-    
+    HTTP_TIMEOUT = 5.0  # seconds
     # Headers for HTTP requests
     _HTTP_HEADERS = {
         "User-Agent": "LibraryApp/1.0 (+https://example.local)",
@@ -148,7 +148,7 @@ class Library(AbstractLibrary):
             resp = httpx.get(
                 url,
                 headers=self._HTTP_HEADERS,
-                timeout=10.0,
+                timeout=self.HTTP_TIMEOUT,
                 follow_redirects=True,
             )
             if resp.status_code == 404:
@@ -168,7 +168,7 @@ class Library(AbstractLibrary):
             resp = httpx.get(
                 url,
                 headers=self._HTTP_HEADERS,
-                timeout=10.0,
+                timeout=self.HTTP_TIMEOUT,
                 follow_redirects=True,
             )
             if resp.status_code == 404:

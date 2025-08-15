@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
-from .book import Book
+from models.book import Book
+from typing import Optional
 
 class AbstractLibrary(ABC):
     @abstractmethod
@@ -25,4 +26,9 @@ class AbstractLibrary(ABC):
 
     @abstractmethod
     def load_books(self) -> None:
+        pass
+
+    @abstractmethod
+    def add_book_by_isbn(self, isbn: str) -> Optional[Book]:
+        """Fetch by ISBN from Open Library, add to storage, return Book or None if not found/error."""
         pass
