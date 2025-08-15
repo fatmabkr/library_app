@@ -1,4 +1,4 @@
-# 📚 library_app – Python 202 Bootcamp Project
+# 📚 library_app – Python 202 Bootcamp Project ✨
 
 A modular, object-oriented Python application for managing a personal library.  
 Developed as part of the **Global AI Hub Python 202 Bootcamp**, this project demonstrates:
@@ -8,23 +8,9 @@ Developed as part of the **Global AI Hub Python 202 Bootcamp**, this project dem
 
 ---
 
-## 📑 Table of Contents
-1. [Introduction](#introduction)
-2. [Project Goals](#project-goals)
-3. [Stages Overview](#stages-overview)
-4. [Abstract Base Class Design](#abstract-base-class-design)
-5. [Features](#features)
-6. [Installation](#installation)
-7. [Project Structure](#project-structure)
-8. [Usage](#usage)
-9. [Testing](#testing)
-10. [API Documentation (Stage 3)](#api-documentation-stage-3)
-11. [Future Improvements](#future-improvements)
-
----
-
 ## 📌 Introduction
-**library_app** evolves from a simple terminal-based book manager into an enriched application that integrates external data sources and finally exposes its functionality as a REST API.
+**library_app** evolves from a simple terminal-based book manager into an enriched application 
+that integrates external data sources and finally exposes its functionality as a REST API.
 
 The project emphasizes:
 - **Clean architecture** and code reusability.
@@ -34,7 +20,7 @@ The project emphasizes:
 
 ---
 
-## 🎯 Project Goals
+## 🎯 Goals
 - Implement **OOP principles** using an **Abstract Base Class** to enforce method contracts.
 - Provide core library operations: add, remove, list, find books.
 - Enrich data automatically using **Open Library Books API**.
@@ -46,7 +32,7 @@ The project emphasizes:
 
 ### **Stage 1 – OOP Terminal Application**
 - Created `Book` and `Library` classes.
-- Defined an `AbstractLibrary` **abstract base class** to enforce a consistent interface for all library implementations.
+- Defined an `AbstractLibrary` **abstract base class** to enforce a consistent interface.
 - Implemented file persistence with `library.json`.
 
 ### **Stage 2 – External API Integration**
@@ -59,17 +45,16 @@ The project emphasizes:
 
 ### **Stage 3 – FastAPI Web Service**
 - Developed REST endpoints:
-  - `GET /books` – Return all stored books.
-  - `POST /books` – Add book by ISBN (fetching details via API).
+  - `GET /books` – List all stored books.
+  - `POST /books` – Add book by ISBN (fetch details via API).
   - `DELETE /books/{isbn}` – Remove book by ISBN.
-- Used **Pydantic** models for request/response validation.
-- Hosted with `uvicorn`.
+- Used **Pydantic** for request/response validation.
+- Served with `uvicorn`.
 
 ---
 
 ## 🧩 Abstract Base Class Design
 The **`AbstractLibrary`** class in `models/abstract_library.py` defines the *contract* for any library implementation.  
-It ensures the following methods are implemented:
 
 ```python
 @abstractmethod
@@ -92,25 +77,22 @@ def load_books(self) -> None: pass
 
 @abstractmethod
 def add_book_by_isbn(self, isbn: str) -> Optional[Book]: pass
-This design:
-Guarantees that all required operations are available in any subclass.
-Improves code maintainability and scalability.
-Allows for easy future replacement of the storage backend (e.g., switch from JSON to SQL).
-✨ Features
-Abstract Base Class enforcing consistent design.
-Manual and automatic book addition via ISBN.
-ISBN normalization for consistent storage.
-Persistent JSON storage.
-API integration with error handling.
-REST API endpoints using FastAPI.
-Comprehensive test coverage with pytest.
-📥 Installation
-1. Clone the Repository
-git clone https://github.com/<your-username>/library_app.git
-cd library_app
-2. Install Dependencies
-python3 -m pip install -r requirements.txt
-📂 Project Structure
+
+```python
+@abstractmethod
+def add_book_by_isbn(self, isbn: str) -> Optional[Book]: pass
+```
+
+## ✨ Features
+- Abstract Base Class enforcing consistent design.
+- Manual & automatic book addition via ISBN.
+- ISBN normalization for consistent storage.
+- Persistent JSON storage.
+- API integration with error handling.
+- REST API endpoints using FastAPI.
+- Comprehensive test coverage with pytest.
+
+## Project Structure✨
 library_app/
 ├── main.py                 # Terminal interface (Stage 1 & 2)
 ├── api.py                  # FastAPI app (Stage 3)
@@ -130,45 +112,50 @@ library_app/
     ├── test_library_removal.py        # Tests book removal
     ├── test_openlibrary_api_extra.py  # Tests API integration
     ├── test_validation.py             # Tests input validation
-💻 Usage
-Terminal Application (Stages 1 & 2)
-python3 main.py
-Menu:
+
+#Usage
+- Terminal Application (Stages 1 & 2)
+     python3 main.py
+  
+## Menu
 1) Add Book by ISBN (Auto)
 2) Remove Book
 3) List Books
 4) Find Book
 5) Add Book (Manual)
 6) Exit
-API Server (Stage 3)
+   
+#API Server (Stage 3)
 uvicorn api:app --reload
-Then open:
-http://127.0.0.1:8000/docs
-🧪 Testing
-Run All Tests
+
+# Testing✨
+- Run All Tests 
 python3 -m pytest -v
-Test Coverage:
+**Test Coverage:
 test_library_add_file.py → Verifies book addition logic.
 test_library_persistence.py → Confirms JSON read/write works.
 test_library_removal.py → Ensures books can be removed.
 test_openlibrary_api_extra.py → Tests API fetching logic.
 test_validation.py → Checks validation rules.
-📜 API Documentation (Stage 3)
+
+API Documentation (Stage 3)
 POST /books
-Request body:
+**Request body:
 {
   "isbn": "9780140449112"
 }
-Response (success):
+**Response:
 {
   "title": "The Odyssey",
   "author": "Όμηρος",
   "isbn": "9780140449112"
 }
-🚀 Future Improvements
-ISBN-10 to ISBN-13 conversion.
-SQLite or PostgreSQL backend.
-PUT endpoint for updating book details.
-Frontend consuming the API.
-Docker containerization.
+  
+## Installation
+- Clone the Repository:
+  git clone https://github.com/<your-username>/library_app.git
+    cd library_app
+
+- Install Dependencies:
+python3 -m pip install -r requirements.txt
 
