@@ -43,20 +43,20 @@ Tests are written with **pytest**.
 
 ## Project Structure
 - library_app/
-* main.py                     # Terminal interface (Stage 1 & 2)
-* api.py                      # FastAPI app (Stage 3)
-* library.json                # Persistent storage (JSON)
-* requirements.txt            # Dependencies
-* pytest.ini                  # Pytest configuration
-*  __init__.py
+   * main.py                     # Terminal interface (Stage 1 & 2)
+   * api.py                      # FastAPI app (Stage 3)
+   * library.json                # Persistent storage (JSON)
+   * requirements.txt            # Dependencies
+   * pytest.ini                  # Pytest configuration
+   *  __init__.py
 
 - models/
-* __init__.py
-* abstract_library.py     # Abstract Base Class
-* book.py                 # Book entity
-* library.py              # Library implementation
+   * __init__.py
+   * abstract_library.py     # Abstract Base Class
+   * book.py                 # Book entity
+   * library.py              # Library implementation
 
-   - tests/
+- tests/
     * __init__.py
     * test_api_stage3.py              # Tests FastAPI endpoints
     * test_library_add_find.py        # Tests book addition & find
