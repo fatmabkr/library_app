@@ -10,6 +10,31 @@ from pydantic import BaseModel, Field
 
 from models.book import Book
 from models.library import Library
+import httpx
+from fastapi import HTTPException
+
+def fetch_by_isbn_or_search(isbn: str) -> dict:
+    base = "https://openlibrary.org"
+   
+    r = httpx.get(f"{base}/isbn/{isbn}.json", timeout=10)
+    if r.status_code == 200:
+        return r.json()
+    if r.status_code != 404:
+        r.raise_for_status()
+
+    sr = httpx.get(f"{base}/search.json", params={"isbn": isbn}, timeout=10)
+    sr.raise_for_status()
+    doc = sr.json()
+    if doc.get("num_found", 0) > 0:
+        
+        cand = doc["docs"][0].get("isbn", []) or doc["docs"][0].get("isbn13", [])
+        for alt in cand:
+            rr = httpx.get(f"{base}/isbn/{alt}.json", timeout=10)
+            if rr.status_code == 200:
+                return rr.json()
+
+    raise HTTPException(status_code=404, detail="Book not found on Open Library.")
+
 
 
 #  Small helpers 
